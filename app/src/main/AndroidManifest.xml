@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
+            android:name=".Rankings"
+            android:exported="false" />
+        <activity
+            android:name=".Leaderboards"
+            android:exported="false" />
+        <activity
+            android:name=".servers"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
