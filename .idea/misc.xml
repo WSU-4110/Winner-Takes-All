@@ -3,18 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/dvan0/Winner-Takes-All/app/src/main/res/layout/activity_leaderboards.xml" value="0.2807971014492754" />
-        <entry key="..\:/Users/dvan0/Winner-Takes-All/app/src/main/res/layout/activity_main.xml" value="0.17426545086119555" />
-        <entry key="..\:/Users/dvan0/Winner-Takes-All/app/src/main/res/layout/activity_rankings.xml" value="0.2807971014492754" />
-        <entry key="..\:/Users/dvan0/Winner-Takes-All/app/src/main/res/layout/activity_servers.xml" value="0.27309782608695654" />
-        <entry key="..\:/Users/dvan0/Winner-Takes-All/app/src/main/res/layout/activity_settings.xml" value="0.27309782608695654" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_api_connection_test.xml" value="0.22" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_leaderboards.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_rankings.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_servers.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/shake/Desktop/Software Engineering Project/Winner-Takes-All/app/src/main/res/layout/activity_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/shake/Desktop/WinnerTakesAll/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.17939249674479166" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2610163370768229" />
       </map>
     </option>
