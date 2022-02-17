@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Winner Takes All"
@@ -64,5 +65,16 @@
         app:layout_constraintStart_toEndOf="@+id/button_rankings"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.774" />
+
+    <Button
+        android:id="@+id/button_pickem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Pickem Test"
+        android:onClick="showApi"
+        app:layout_constraintBottom_toTopOf="@+id/button_rankings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

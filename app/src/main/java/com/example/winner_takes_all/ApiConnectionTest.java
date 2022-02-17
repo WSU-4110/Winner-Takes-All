@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -39,6 +42,7 @@ public class ApiConnectionTest extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
+                call.cancel();
             }
 
             @Override
@@ -46,12 +50,23 @@ public class ApiConnectionTest extends AppCompatActivity {
 
                 if (response.isSuccessful())
                 {
-                    String myResponse=response.body().toString();
+
+                    //String myResponse=response.toString();
+                    final String myResponse=response.toString();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mTextView.setText(myResponse);
+                            //mTextView.setText(myResponse);
+                            //mTextView.setText(response);
+                            //System.out.println(response.body().toString());
+                           try {
+                            JSONObject json = new JSONObject(myResponse);
+                            mTextView.setText(json.toString());
+                            } catch (JSONException e) {
+                               e.printStackTrace();
+                           }
+
                         }
                     });
                 }

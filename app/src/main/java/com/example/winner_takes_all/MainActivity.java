@@ -54,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void showApi(View view)
+    {
+        Toast toast = Toast.makeText(this,"New Page!", Toast.LENGTH_SHORT);
+
+        openApi();
+        toast.show();
+    }
+
+
+
+
     public void openNewActivity(){
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
@@ -76,5 +87,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Leaderboards.class);
         startActivity(intent);
 
+    }
+
+    public void openApi(){
+        Intent intent =new Intent(this,ApiConnectionTest.class);
+        startActivity(intent);
     }
 }
