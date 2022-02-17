@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
+            android:name=".SettingUserNM"
+            android:exported="false" />
+        <activity
             android:name=".ApiConnectionTest"
             android:exported="false" />
         <activity
