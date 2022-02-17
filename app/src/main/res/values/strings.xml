@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Winner-Takes-All</string>
+    <string name="toast_message">New Page!</string>
 </resources>
