@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT);
 
 
-        openserv();
+        //openserv();
         toast.show();
 
     }
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openserv(){
+   /* public void openserv(){
         Intent intent = new Intent(this, servers.class);
         startActivity(intent);
 
-    }
+    }*/
 
     public void openrank(){
         Intent intent = new Intent(this, Rankings.class);

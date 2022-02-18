@@ -1,4 +1,4 @@
-package com.example.winner_takes_all;
+/*package com.example.winner_takes_all;
 
 import android.os.Bundle;
 
@@ -48,4 +48,4 @@ public class LoginScreen extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-}
+}*/
