@@ -13,7 +13,14 @@
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
             android:name=".SignIn"
+<<<<<<< HEAD
             android:exported="true" />
+=======
+            android:exported="false" />
+        <activity
+            android:name=".login"
+            android:exported="false" />
+>>>>>>> 7adfba9c7c2da72308164b4df0b47b065aa9f513
         <activity
             android:name=".register"
             android:exported="true">
