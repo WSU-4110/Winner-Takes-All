@@ -83,49 +83,49 @@ public class register extends AppCompatActivity {
                     return;
 
                 }
+                if (reenterPassword.equals(password)){
 
-               //if (reenterPassword != password ){
+                    fAuth.fetchSignInMethodsForEmail(email)
+                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
 
-                   //UserReenterPassword.setError("password doesnt match");
-                   //return;
+                                    boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
-               //}
+                                    if (isNewUser) {
+                                        fAuth.createUserWithEmailAndPassword(email,reenterPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if(task.isSuccessful()){
 
+                                                    Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                                }
+                                                else{
+
+                                                    Toast.makeText(register.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }
+                                        });
+
+                                    }
+                                    else {
+
+                                        UserEmail.setError("Email already exists");
+                                    }
+                                }
+                            });
+
+
+                }
+                else {
+
+                    UserReenterPassword.setError("Password Doesn't match");
+                }
                 progressBar.setVisibility(View.VISIBLE);
 
 
-                // Register UserEmail and Password in Firebase
-                fAuth.fetchSignInMethodsForEmail(email)
-                        .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-
-                                boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
-
-                                if (isNewUser) {
-                                    fAuth.createUserWithEmailAndPassword(email,reenterPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if(task.isSuccessful()){
-
-                                                Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                            }
-                                            else{
-
-                                                Toast.makeText(register.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-                                            }
-                                        }
-                                    });
-
-                                }
-                                else {
-
-                                    UserEmail.setError("Email already exists");
-                                }
-                            }
-                        });
 
             }
         });
