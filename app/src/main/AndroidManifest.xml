@@ -38,9 +38,6 @@
             android:name=".Leaderboards"
             android:exported="false" />
         <activity
-            android:name=".servers"
-            android:exported="false" />
-        <activity
             android:name=".Settings"
             android:exported="false" />
         <activity

@@ -23,6 +23,7 @@ public class SignIn extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button mLoginBtn;
     TextView mCreateBtn;
+    TextView mRegisterBtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
@@ -38,6 +39,14 @@ public class SignIn extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.Login);
         mCreateBtn = findViewById(R.id.curentusername);
+        mRegisterBtn = findViewById(R.id.loginhere);
+
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), register.class));
+            }
+        });
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
