@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 public class register extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class register extends AppCompatActivity {
 
         if (fAuth.getCurrentUser()!= null){
 
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),SignIn.class));
             finish();
         }
 
@@ -94,21 +95,37 @@ public class register extends AppCompatActivity {
 
 
                 // Register UserEmail and Password in Firebase
-                fAuth.createUserWithEmailAndPassword(email,reenterPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                fAuth.fetchSignInMethodsForEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
 
-                            Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    }
-                        else{
+                                boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
-                            Toast.makeText(register.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                if (isNewUser) {
+                                    fAuth.createUserWithEmailAndPassword(email,reenterPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if(task.isSuccessful()){
 
-                        }
-                    }
-                });
+                                                Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                            }
+                                            else{
+
+                                                Toast.makeText(register.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+                                    });
+
+                                }
+                                else {
+
+                                    UserEmail.setError("Email already exists");
+                                }
+                            }
+                        });
 
             }
         });
