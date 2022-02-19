@@ -36,7 +36,7 @@ public class register extends AppCompatActivity {
         UserPassword =  findViewById(R.id.Password);
         UserReenterPassword = findViewById(R.id.Reenterpasssword);
         RegistrationBtn = findViewById(R.id.Register);
-        LoginBtn = findViewById(R.id.loginhere);
+        LoginBtn = findViewById(R.id.login);
 
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
@@ -83,12 +83,12 @@ public class register extends AppCompatActivity {
 
                 }
 
-               if (reenterPassword != password ){
+               //if (reenterPassword != password ){
 
-                   UserReenterPassword.setError("password doesnt match");
-                   return;
+                   //UserReenterPassword.setError("password doesnt match");
+                   //return;
 
-               }
+               //}
 
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -109,6 +109,14 @@ public class register extends AppCompatActivity {
                         }
                     }
                 });
+
+            }
+        });
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),SignIn.class));
             }
         });
     }
