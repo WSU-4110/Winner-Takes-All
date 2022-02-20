@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +33,7 @@ public class ApiConnectionTest extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://sportspage-feeds.p.rapidapi.com/games?date=2022-02-15")
+                .url("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=2022-02-15")
                 .get()
                 .addHeader("x-rapidapi-host", "sportspage-feeds.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "2ff220ae4bmshbac83d35a82e673p100415jsn8883f8b8d881")
@@ -52,7 +53,7 @@ public class ApiConnectionTest extends AppCompatActivity {
                 {
 
                     //String myResponse=response.toString();
-                    final String myResponse=response.toString();
+                    final String myResponse=response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
@@ -60,12 +61,31 @@ public class ApiConnectionTest extends AppCompatActivity {
                             //mTextView.setText(myResponse);
                             //mTextView.setText(response);
                             //System.out.println(response.body().toString());
-                           try {
-                            JSONObject json = new JSONObject(myResponse);
-                            mTextView.setText(json.toString());
+                            //mTextView.setText(response.body().toString());
+                            try {
+                                JSONObject json = new JSONObject(myResponse);
+                                JSONArray jarray=json.getJSONArray("results");
+
+                                //mTextView.setText(json.toString());
+                                //  mTextView.setText(json.getJSONObject("results").getString("summary").toString());
+                                //mTextView.setText(json.getString("summary").toString());
+
+                                for(int i=0; i < jarray.length(); i++)
+                                {
+                                    JSONObject obj=jarray.getJSONObject(i);
+                                    String match = obj.getString("summary");
+
+                                   // mTextView.setText(match);
+
+                                    mTextView.append(match + "\n");
+
+                                }
+
+
+
                             } catch (JSONException e) {
-                               e.printStackTrace();
-                           }
+                                e.printStackTrace();
+                            }
 
                         }
                     });
