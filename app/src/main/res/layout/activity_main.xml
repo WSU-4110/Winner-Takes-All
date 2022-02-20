@@ -22,59 +22,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="84dp"
-        android:text="Settings"
         android:onClick="showToast"
+        android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button_Servers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginBottom="84dp"
-        android:text="Servers"
-        android:onClick="showToastserv"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_settings"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_leaderboard"
+        app:layout_constraintVertical_bias="0.434" />
 
     <Button
         android:id="@+id/button_rankings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="316dp"
         android:onClick="showToastrank"
         android:text="Rankings"
-        app:layout_constraintBottom_toTopOf="@+id/button_Servers"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_leaderboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="leaderboard"
+        android:layout_marginTop="316dp"
         android:onClick="showToastleads"
-        app:layout_constraintBottom_toTopOf="@+id/button_settings"
+        android:text="leaderboard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintHorizontal_bias="0.649"
         app:layout_constraintStart_toEndOf="@+id/button_rankings"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_pickem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Pickem Test"
+        android:layout_marginStart="16dp"
         android:onClick="showApi"
-        app:layout_constraintBottom_toTopOf="@+id/button_rankings"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text=" Pickem Test"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_settings"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/button_rankings"
+        app:layout_constraintVertical_bias="0.434" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
