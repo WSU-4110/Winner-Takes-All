@@ -39,7 +39,7 @@ public class SignIn extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.Login);
         mCreateBtn = findViewById(R.id.curentusername);
-        mRegisterBtn = findViewById(R.id.loginhere);
+        mRegisterBtn = findViewById(R.id.button5);
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
