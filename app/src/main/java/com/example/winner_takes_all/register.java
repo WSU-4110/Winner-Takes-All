@@ -45,11 +45,11 @@ public class register extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);// setting up progress bar
 
         // if device already has registered once go to sign in page on open
-        if (fAuth.getCurrentUser()!= null){
+      //  if (fAuth.getCurrentUser()!= null){
 
-            startActivity(new Intent(getApplicationContext(),SignIn.class));
-            finish();
-        }
+            //startActivity(new Intent(getApplicationContext(),SignIn.class));
+           // finish();
+        //}
         // on registration button pressed get data for the text
         RegistrationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
