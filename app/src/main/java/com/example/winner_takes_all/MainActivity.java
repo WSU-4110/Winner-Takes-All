@@ -1,24 +1,75 @@
 package com.example.winner_takes_all;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class MainActivity extends AppCompatActivity {
+    // Realtime Database setup 1
+    DatabaseReference databaseReference;
+    // Access a Cloud Firestore instance from your Activity
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    // Create a new user with a first and last name
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Realtime Database setup 2
+        databaseReference = FirebaseDatabase.getInstance().getReference("this will show on firebase path");
+
+        // Realtime Database creating prompts for success, failure, complete result 3
+        databaseReference.setValue("hello there").addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); // Could put success text
+            }
+        }).addOnFailureListener(new OnFailureListener() { // If failure happens
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show(); // Could put failed text
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) { // W7hen it's done
+                // No text here to avoid spamming success, and complete
+                // Could delete onSuccess & onFailure and go back to override
+                // and just keep this lower function if you wanted
+                // Finished with database prompts 4
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
+
     public void showToast(View view) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
                 Toast.LENGTH_SHORT);
-
-
         openNewActivity();
         toast.show();
 
@@ -27,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
     public void showToastserv(View view) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
                 Toast.LENGTH_SHORT);
-
-
         //openserv();
         toast.show();
 
@@ -37,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
     public void showToastrank(View view) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
                 Toast.LENGTH_SHORT);
-
-
         openrank();
         toast.show();
 
@@ -47,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
     public void showToastleads(View view) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
                 Toast.LENGTH_SHORT);
-
-
         openleads();
         toast.show();
 
@@ -57,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
     public void showApi(View view)
     {
         Toast toast = Toast.makeText(this,"New Page!", Toast.LENGTH_SHORT);
-
         openApi();
         toast.show();
     }
