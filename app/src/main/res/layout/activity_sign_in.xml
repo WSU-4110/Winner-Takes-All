@@ -10,9 +10,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:text="Winner Takes All"
-        android:textColor="#F44336"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Log In"
+        android:textColor="@color/black"
         android:textSize="34sp"
         android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,20 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create New Account"
-        android:textColor="#8BC34A"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" />
-
 
 
     <EditText
@@ -43,14 +29,15 @@
         android:ems="10"
         android:hint="Email : example@email.com"
         android:inputType="textPersonName"
-        android:textColorHint="#8C9EFF"
+        android:textColorHint="@color/MainGreen"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.243" />
+
 
     <EditText
         android:id="@+id/Password"
@@ -59,30 +46,27 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColorHint="#8C9EFF"
+        android:textColorHint="@color/MainGreen"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
-
-
+        app:layout_constraintVertical_bias="0.385" />
 
     <Button
         android:id="@+id/Login"
         android:layout_width="285dp"
         android:layout_height="66dp"
         android:text="Log In"
-        android:textColor="#DA4848"
+        android:textColor="@color/MainGold"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713" />
+        app:layout_constraintVertical_bias="0.627" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -102,7 +86,7 @@
         android:layout_width="287dp"
         android:layout_height="62dp"
         android:text="Create Account"
-        android:textColor="#F44336"
+        android:textColor="@color/MainGold"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
