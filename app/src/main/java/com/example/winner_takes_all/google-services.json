@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "62948269017",
+    "project_id": "winner-takes-all-f7bda",
+    "storage_bucket": "winner-takes-all-f7bda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62948269017:android:93b4991c72924fc9c997c8",
+        "android_client_info": {
+          "package_name": "com.example.winner_takes_all"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62948269017-35367h81ithgel2a35s5i6o89k7glr1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJFMVWsWjE8Ym9y6Vvp_hi84d1sBpLEO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62948269017-35367h81ithgel2a35s5i6o89k7glr1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
