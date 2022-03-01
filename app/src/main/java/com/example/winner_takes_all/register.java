@@ -122,7 +122,6 @@ public class register extends AppCompatActivity {
                                                     Map<String,Object> user = new HashMap<>();
                                                     user.put("UserName", username);
                                                     user.put("Email", email);
-                                                    user.put("password", password);
                                                     documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
