@@ -40,6 +40,7 @@ public class register extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +121,9 @@ public class register extends AppCompatActivity {
                                                     DocumentReference documentReference = fStore.collection("users").document(userID);
 
                                                     Map<String,Object> user = new HashMap<>();
-                                                    user.put("UserName", username);
-                                                    user.put("Email", email);
+                                                    user.put("UserName:", username);
+                                                    user.put("Email:", email);
+                                                    user.put("Score:", score);
                                                     documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
