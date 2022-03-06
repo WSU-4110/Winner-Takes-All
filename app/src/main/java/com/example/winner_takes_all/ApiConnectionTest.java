@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -27,6 +29,7 @@ public class ApiConnectionTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_api_connection_test);
+
     }
 
     public void showNBA(View view){
@@ -44,14 +47,20 @@ public class ApiConnectionTest extends AppCompatActivity {
     public void NBAButton()
     {
 
+
         mTextView=findViewById(R.id.textView);
 
         mTextView.setText("");
 
         OkHttpClient client = new OkHttpClient();
 
+        Date cdate = new Date();
+        String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
+        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=%s",CurrentDate);
+
         Request request = new Request.Builder()
-                .url("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=2022-02-15")
+                //.url("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=2022-02-15")
+                .url(URL)
                 .get()
                 .addHeader("x-rapidapi-host", "sportspage-feeds.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "2ff220ae4bmshbac83d35a82e673p100415jsn8883f8b8d881")
@@ -93,7 +102,7 @@ public class ApiConnectionTest extends AppCompatActivity {
                                     JSONObject obj=jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
-                                   // mTextView.setText(match);
+                                    // mTextView.setText(match);
 
                                     mTextView.append(match + "\n");
 
@@ -120,8 +129,14 @@ public class ApiConnectionTest extends AppCompatActivity {
 
         OkHttpClient client = new OkHttpClient();
 
+        Date cdate = new Date();
+        String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
+        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NFL&date=%s",CurrentDate);
+
+
         Request request = new Request.Builder()
-                .url("https://sportspage-feeds.p.rapidapi.com/games?league=NFL&date=2022-02-13")
+                //.url("https://sportspage-feeds.p.rapidapi.com/games?league=NFL&date=2022-02-13")
+                .url(URL)
                 .get()
                 .addHeader("x-rapidapi-host", "sportspage-feeds.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "2ff220ae4bmshbac83d35a82e673p100415jsn8883f8b8d881")
@@ -190,8 +205,13 @@ public class ApiConnectionTest extends AppCompatActivity {
 
         OkHttpClient client = new OkHttpClient();
 
+        Date cdate = new Date();
+        String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
+        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=%s",CurrentDate);
+
         Request request = new Request.Builder()
-                .url("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=2022-02-15")
+                //.url("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=2022-02-15")
+                .url(URL)
                 .get()
                 .addHeader("x-rapidapi-host", "sportspage-feeds.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "2ff220ae4bmshbac83d35a82e673p100415jsn8883f8b8d881")
@@ -259,8 +279,13 @@ public class ApiConnectionTest extends AppCompatActivity {
 
         OkHttpClient client = new OkHttpClient();
 
+        Date cdate = new Date();
+        String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
+        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=%s",CurrentDate);
+
         Request request = new Request.Builder()
-                .url("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=2021-10-15")
+                //.url("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=2021-10-15")
+                .url(URL)
                 .get()
                 .addHeader("x-rapidapi-host", "sportspage-feeds.p.rapidapi.com")
                 .addHeader("x-rapidapi-key", "2ff220ae4bmshbac83d35a82e673p100415jsn8883f8b8d881")
