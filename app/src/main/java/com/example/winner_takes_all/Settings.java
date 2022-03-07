@@ -12,7 +12,8 @@ import android.widget.RadioGroup;
 public class Settings extends AppCompatActivity {
 
     private Button button;
-    private RadioGroup rG;
+    private Button button1;
+    private Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,23 +27,32 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        rG = findViewById(R.id.Butongroup);
-        rG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        button1 = (Button) findViewById(R.id.Chngpass);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.Light:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        break;
-                    case R.id.Dark:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        break;
-                }
+            public void onClick(View view) {
+                changepass();
+            }
+        });
+
+        button2 = (Button) findViewById(R.id.Theme);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeTheme();
             }
         });
     }
     public void opensetuser(){
         Intent intent = new Intent (this, SettingUserNM.class);
+        startActivity(intent);
+    }
+    public void changepass(){
+        Intent intent = new Intent (this, ChangePassword.class);
+        startActivity(intent);
+    }
+    public void changeTheme(){
+        Intent intent = new Intent (this, Theme.class);
         startActivity(intent);
     }
 }
