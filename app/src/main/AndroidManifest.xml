@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
+            android:name=".deleteAccount"
+            android:exported="false" />
+        <activity
             android:name=".Theme"
             android:exported="false" />
         <activity
@@ -26,11 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".splashscreen"
             android:exported="true" />
-
         <activity
             android:name=".SignIn"
             android:exported="true" />
