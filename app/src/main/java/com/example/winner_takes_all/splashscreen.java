@@ -40,7 +40,7 @@ public class splashscreen extends AppCompatActivity {
              public void run() {
                  Intent intent = new Intent(splashscreen.this,SignIn.class);
                  startActivity(intent);
-                // finish();
+                 finish();
              }
          },SPLASH_SCREEN);
 
