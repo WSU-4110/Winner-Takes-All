@@ -89,7 +89,8 @@ public class register extends AppCompatActivity {
                 //if password is smaller than length display error
                 if (password.length()< 8){
 
-                    UserPassword.setError("password >= 8 characters");
+                    UserReenterPassword.setError("password >= 8 characters");
+                    return;
                 }
                 //if re enter password is empty display error
                 if (TextUtils.isEmpty(reenterPassword)){
