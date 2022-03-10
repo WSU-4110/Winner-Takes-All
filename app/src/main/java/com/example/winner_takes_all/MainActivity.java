@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() { // If failure happens
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show(); // Could put failed text
+                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); // Could put failed text
             }
         }).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
