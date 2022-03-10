@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -14,20 +17,30 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class register extends AppCompatActivity {
 
+    public static final String TAG = "TAG";
     // adding class variables
     EditText UserName,UserEmail,UserPassword,UserReenterPassword;
     Button RegistrationBtn;
     TextView LoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    FirebaseFirestore fStore;
+    String userID;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +55,14 @@ public class register extends AppCompatActivity {
         LoginBtn = findViewById(R.id.login);// setting up login button
 
         fAuth = FirebaseAuth.getInstance();// setting up fire base Authentication on device
+        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);// setting up progress bar
 
-        // if device already has registered once go to sign in page on open
-        if (fAuth.getCurrentUser()!= null){
 
-            startActivity(new Intent(getApplicationContext(),SignIn.class));
-            finish();
-        }
-        // on registration button pressed get data for the text
         RegistrationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = UserName.getText().toString().trim();
+                String username = UserName.getText().toString();
                 String email = UserEmail.getText().toString().trim();
                 String password = UserPassword.getText().toString().trim();
                 String reenterPassword = UserReenterPassword.getText().toString().trim();
@@ -109,6 +117,25 @@ public class register extends AppCompatActivity {
                                                 if(task.isSuccessful()){
 
                                                     Toast.makeText(register.this, "User Created", Toast.LENGTH_SHORT).show();
+                                                    userID = fAuth.getCurrentUser().getUid();
+                                                    DocumentReference documentReference = fStore.collection("users").document(userID);
+
+                                                    Map<String,Object> user = new HashMap<>();
+                                                    user.put("UserName:", username);
+                                                    user.put("Email:", email);
+                                                    user.put("Score:", score);
+                                                    documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            Log.d(TAG,"user profile is created for "+ username);
+
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.d(TAG,"onFaliure"+ e.toString());
+                                                        }
+                                                    });
                                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                                 }
                                                 // if account still isn't registered display error message

@@ -31,6 +31,7 @@ public class openingscreen extends AppCompatActivity {
 
 
         opensignup();
+
         toast.show();
 
     }
@@ -40,6 +41,8 @@ public class openingscreen extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 
     public void opensignin(){
         Intent intent = new Intent(this, SignIn.class);
