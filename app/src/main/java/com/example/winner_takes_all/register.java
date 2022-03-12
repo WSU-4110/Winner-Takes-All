@@ -40,7 +40,8 @@ public class register extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
-    int score = 0;
+    View Score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class register extends AppCompatActivity {
         UserReenterPassword = findViewById(R.id.Reenterpasssword);// setting up re enter password text
         RegistrationBtn = findViewById(R.id.Register);// setting up registration button
         LoginBtn = findViewById(R.id.login);// setting up login button
+        Score = findViewById(R.id.Score);
 
         fAuth = FirebaseAuth.getInstance();// setting up fire base Authentication on device
         fStore = FirebaseFirestore.getInstance();
@@ -124,7 +126,7 @@ public class register extends AppCompatActivity {
                                                     Map<String,Object> user = new HashMap<>();
                                                     user.put("UserName:", username);
                                                     user.put("Email:", email);
-                                                    user.put("Score:", score);
+                                                    user.put("Score:", Score);
                                                     documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -134,7 +136,7 @@ public class register extends AppCompatActivity {
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Log.d(TAG,"onFaliure"+ e.toString());
+                                                            Log.d(TAG,"onFai1lure"+ e.toString());
                                                         }
                                                     });
                                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));

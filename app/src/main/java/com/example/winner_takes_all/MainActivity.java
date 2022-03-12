@@ -36,36 +36,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Realtime Database setup 2
         databaseReference = FirebaseDatabase.getInstance().getReference("this will show on firebase path");
-
-        // Realtime Database creating prompts for success, failure, complete result 3
         databaseReference.setValue("hello there").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); // Could put success text
             }
-        }).addOnFailureListener(new OnFailureListener() { // If failure happens
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); // Could put failed text
+              /*  Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); Could put failed text */
             }
         }).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) { // W7hen it's done
-                // No text here to avoid spamming success, and complete
-                // Could delete onSuccess & onFailure and go back to override
-                // and just keep this lower function if you wanted
-                // Finished with database prompts 4
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                   /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
                 } else {
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                   /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
                 }
 
             }
         });
     }
+
 
     public void showToast(View view) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
