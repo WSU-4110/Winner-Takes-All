@@ -24,6 +24,7 @@ public class peopleAdapter extends FirebaseRecyclerAdapter<
     {
         holder.Email.setText(model.getEmail());
         holder.Username.setText(model.getUsername());
+        holder.Score.setText(model.getScore());
     }
     @NonNull
     @Override
@@ -39,12 +40,13 @@ public class peopleAdapter extends FirebaseRecyclerAdapter<
 
     class personsViewholder
             extends RecyclerView.ViewHolder {
-        TextView Email, Username;
+        TextView Email, Username, Score;
         public personsViewholder(@NonNull View itemView)
         {
             super(itemView);
             Email = itemView.findViewById(R.id.email);
-            Username = itemView.findViewById(R.id.Usernm);
+            Username = itemView.findViewById(R.id.UserName);
+            Score = itemView.findViewById(R.id.Score);
         }
     }
 }
