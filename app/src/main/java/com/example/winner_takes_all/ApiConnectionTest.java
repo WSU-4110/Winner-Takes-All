@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -13,7 +15,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,9 +53,8 @@ public class ApiConnectionTest extends AppCompatActivity {
     {
 
 
-        mTextView=findViewById(R.id.textView);
+        ArrayList <String> games=new ArrayList<String>();
 
-        mTextView.setText("");
 
         OkHttpClient client = new OkHttpClient();
 
@@ -76,37 +80,32 @@ public class ApiConnectionTest extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
+
                 if (response.isSuccessful())
                 {
 
-                    //String myResponse=response.toString();
+
                     final String myResponse=response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //mTextView.setText(myResponse);
-                            //mTextView.setText(response);
-                            //System.out.println(response.body().toString());
-                            //mTextView.setText(response.body().toString());
+
+
                             try {
                                 JSONObject json = new JSONObject(myResponse);
                                 JSONArray jarray=json.getJSONArray("results");
 
-                                //mTextView.setText(json.toString());
-                                //  mTextView.setText(json.getJSONObject("results").getString("summary").toString());
-                                //mTextView.setText(json.getString("summary").toString());
 
                                 for(int i=0; i < jarray.length(); i++)
                                 {
                                     JSONObject obj=jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
-                                    // mTextView.setText(match);
-
-                                    mTextView.append(match + "\n");
+                                    games.add(match);
 
                                 }
+                                PrintGames(games);
 
 
 
@@ -122,10 +121,11 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     };
 
+
+
     public void NFLButton()
     {
-        mTextView=findViewById(R.id.textView);
-        mTextView.setText("");
+        ArrayList <String> games=new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -161,28 +161,21 @@ public class ApiConnectionTest extends AppCompatActivity {
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //mTextView.setText(myResponse);
-                            //mTextView.setText(response);
-                            //System.out.println(response.body().toString());
-                            //mTextView.setText(response.body().toString());
+
                             try {
                                 JSONObject json = new JSONObject(myResponse);
                                 JSONArray jarray=json.getJSONArray("results");
 
-                                //mTextView.setText(json.toString());
-                                //  mTextView.setText(json.getJSONObject("results").getString("summary").toString());
-                                //mTextView.setText(json.getString("summary").toString());
 
                                 for(int i=0; i < jarray.length(); i++)
-                                {
-                                    JSONObject obj=jarray.getJSONObject(i);
-                                    String match = obj.getString("summary");
+                                    {
+                                        JSONObject obj=jarray.getJSONObject(i);
+                                        String match = obj.getString("summary");
 
-                                    // mTextView.setText(match);
+                                        games.add(match);
 
-                                    mTextView.append(match + "\n");
-
-                                }
+                                    }
+                                    PrintGames(games);
 
 
 
@@ -199,9 +192,9 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     public void NHLButton()
     {
-        mTextView=findViewById(R.id.textView);
 
-        mTextView.setText("");
+
+        ArrayList <String> games=new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -230,34 +223,27 @@ public class ApiConnectionTest extends AppCompatActivity {
                 if (response.isSuccessful())
                 {
 
-                    //String myResponse=response.toString();
+
                     final String myResponse=response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //mTextView.setText(myResponse);
-                            //mTextView.setText(response);
-                            //System.out.println(response.body().toString());
-                            //mTextView.setText(response.body().toString());
+
                             try {
                                 JSONObject json = new JSONObject(myResponse);
                                 JSONArray jarray=json.getJSONArray("results");
 
-                                //mTextView.setText(json.toString());
-                                //  mTextView.setText(json.getJSONObject("results").getString("summary").toString());
-                                //mTextView.setText(json.getString("summary").toString());
 
                                 for(int i=0; i < jarray.length(); i++)
                                 {
                                     JSONObject obj=jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
-                                    // mTextView.setText(match);
-
-                                    mTextView.append(match + "\n");
+                                    games.add(match);
 
                                 }
+                                PrintGames(games);
 
 
 
@@ -274,8 +260,8 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     public void MLBButton()
     {
-        mTextView=findViewById(R.id.textView);
-        mTextView.setText("");
+
+        ArrayList <String> games=new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -304,34 +290,28 @@ public class ApiConnectionTest extends AppCompatActivity {
                 if (response.isSuccessful())
                 {
 
-                    //String myResponse=response.toString();
+
                     final String myResponse=response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //mTextView.setText(myResponse);
-                            //mTextView.setText(response);
-                            //System.out.println(response.body().toString());
-                            //mTextView.setText(response.body().toString());
+
                             try {
                                 JSONObject json = new JSONObject(myResponse);
                                 JSONArray jarray=json.getJSONArray("results");
 
-                                //mTextView.setText(json.toString());
-                                //  mTextView.setText(json.getJSONObject("results").getString("summary").toString());
-                                //mTextView.setText(json.getString("summary").toString());
+
 
                                 for(int i=0; i < jarray.length(); i++)
                                 {
                                     JSONObject obj=jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
-                                    // mTextView.setText(match);
-
-                                    mTextView.append(match + "\n");
+                                    games.add(match);
 
                                 }
+                                PrintGames(games);
 
 
 
@@ -345,5 +325,37 @@ public class ApiConnectionTest extends AppCompatActivity {
             }
         });
     };
+
+
+
+
+    public void PrintGames(ArrayList<String> games)
+    {
+        setContentView(R.layout.activity_api_connection_test);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
+
+        ArrayList<RadioButton> buttons = new ArrayList<RadioButton>();
+
+        for(int i = 0; i < games.size(); i++) {
+            //for(int i = 0; i < 5; i++) {
+            RadioButton button = new RadioButton(this);
+            RadioButton button2= new RadioButton(this);
+            buttons.add(button);
+            buttons.add(button2);
+            button.setText("Home");
+            button2.setText("Away");
+            button.setId(i);
+            button2.setId(i+1);
+            TextView textbutton= new TextView(this);
+            //textbutton.setText("hi");
+            textbutton.setText(""+games.get(i));
+            //textbutton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            //optional: add your buttons to any layout if you want to see them in your screen
+            layout.addView(textbutton);
+            layout.addView(button);
+            layout.addView(button2);
+
+        }
+    }
 
 }
