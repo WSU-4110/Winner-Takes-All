@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
+            android:name=".changeUserName"
+            android:exported="false" />
+        <activity
+            android:name=".retrieveuserdata"
+            android:exported="false" />
+        <activity
             android:name=".deleteAccount"
             android:exported="false" />
         <activity
@@ -22,8 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".openingscreen"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".splashscreen"
             android:exported="true">
@@ -60,11 +65,14 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
 
         <meta-data
