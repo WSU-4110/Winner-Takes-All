@@ -56,16 +56,16 @@ public class Leaderboards extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException error) {
 
-                UserName.setText(documentSnapshot.getString("UserName" + userId)); /* + User */
-                Score.setText(documentSnapshot.getString("Score" + score));
+                UserName.setText(documentSnapshot.getString("UserName: " + UserName)); /* + User */
+                Score.setText(documentSnapshot.getString("Score: " + score));
                 /* Buttons for add score & end score. Change these to score values later */
-                UserName.setText("UserName: " + userId);
-                Score.setText("Score: " + score);
+                UserName.setText("UserName: " + UserName );
+                Score.setText("Score: " + score );
                 addScore.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         score++;
-                        UserName.setText("UserName: " + userId);
-                        Score.setText("Score: " + score);
+                        UserName.setText("UserName: " + UserName);
+                        Score.setText("Score: " +score );
                     }
                 });
 
