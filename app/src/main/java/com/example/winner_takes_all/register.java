@@ -42,7 +42,7 @@ public class register extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
     View Score;
-    int Admin;
+    int Admin = 0;
     int PowerUP1 = 0;
     int PowerUP2 = 0;
     int PowerUP3 = 0;
@@ -73,6 +73,7 @@ public class register extends AppCompatActivity {
                 String email = UserEmail.getText().toString().trim();
                 String password = UserPassword.getText().toString().trim();
                 String reenterPassword = UserReenterPassword.getText().toString().trim();
+
 
                 // if username is empty display error
                 if (TextUtils.isEmpty(username)) {
@@ -130,6 +131,7 @@ public class register extends AppCompatActivity {
 
                                                     Map<String,Object> user = new HashMap<>();
                                                     user.put("UserName:", username);
+                                                    user.put("Admin:", Admin);
                                                     user.put("Email:", email);
                                                     user.put("Score:", Score);
                                                     user.put("PowerUp1:", PowerUP1);
