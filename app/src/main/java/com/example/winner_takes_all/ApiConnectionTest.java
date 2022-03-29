@@ -356,6 +356,13 @@ public class ApiConnectionTest extends AppCompatActivity {
             layout.addView(button2);
 
         }
+
+        if(games.isEmpty())
+        {
+            TextView nogames= new TextView(this);
+            nogames.setText("No Games today");
+            layout.addView(nogames);
+        }
     }
 
 }
