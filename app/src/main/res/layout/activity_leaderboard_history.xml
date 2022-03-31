@@ -1,47 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LeaderboardsHistory">
 
-
-    <TextView
-        android:id="@+id/Score"
-        android:layout_width="393dp"
-        android:layout_height="571dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="8dp"
-        android:text="SCORE: " />
-
-    <TextView
-        android:id="@+id/UserName"
-        android:layout_width="334dp"
-        android:layout_height="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="2dp"
-
-        android:text="UserName: " />
-
     <TextView
         android:id="@+id/YourScore"
-        android:layout_width="395dp"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
-        android:text="@+id/UserName" />
+        android:layout_width="400dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:text="Your Score:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/TheirScore"
+        android:layout_width="400dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="64dp"
+        android:text="Their Score:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/YourScore" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
