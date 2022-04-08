@@ -17,7 +17,9 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class deleteAccount extends AppCompatActivity {
+
+//Class deleteAccount
+public class deleteAccount extends AppCompatActivity /*Extension of deleteAccount*/ {
 
     FirebaseAuth auth;
     @Override
@@ -28,6 +30,8 @@ public class deleteAccount extends AppCompatActivity {
         final EditText password=findViewById(R.id.logpass);
         Button submit=findViewById(R.id.delete);
         auth= FirebaseAuth.getInstance();
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +41,7 @@ public class deleteAccount extends AppCompatActivity {
     }
 
     private void deletea(String email, String password) {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); /*Firebase class object call*/
         AuthCredential credential = EmailAuthProvider
                 .getCredential(email, password);
         if(user!=null) {
