@@ -29,6 +29,51 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+class WrongReenterpassword{
+    EditText UserReenterPassword;
+    public void reenterpassworderror(String s){
+
+        UserReenterPassword.setError("please re-enter password");
+        return;
+
+    }
+
+
+
+}
+class wrongpassword{
+    EditText UserPassword;
+    public void passworderror(String s){
+
+        UserPassword.setError("password is required");
+        return;
+    }
+    public void wrongpasswordlegnth(String s){
+
+        UserPassword.setError("password is not > than 8 characters");
+        return;
+    }
+}
+
+class wrongemail{
+    EditText UserEmail;
+    public void useremailerror(String s){
+
+        UserEmail.setError("Email is required");
+        return;
+    }
+
+}
+class WrongUsername{
+
+    EditText UserName;
+    public void usernameerror(String s){
+        UserName.setError("UserName is required");
+        return;
+    }
+}
+
+
 
 public class register extends AppCompatActivity {
 
@@ -77,34 +122,31 @@ public class register extends AppCompatActivity {
 
                 // if username is empty display error
                 if (TextUtils.isEmpty(username)) {
-                    UserName.setError("UserName is required");
-                    return;
+                    WrongUsername name;
+                    UserName = name.usernameerror(username);
                 }
                 // if Email is empty display error
                 if (TextUtils.isEmpty(email)){
-
-                    UserEmail.setError("Email is required");
+                    wrongemail nemail;
+                    UserEmail = nemail.useremailerror(email);
                     return;
 
                 }
                 // if password is empty display error
                 if (TextUtils.isEmpty(password)){
-
-                    UserPassword.setError("password is required");
-                    return;
+                    wrongpassword pass;
+                    UserPassword = pass.passworderror(password);
 
                 }
                 //if password is smaller than length display error
                 if (password.length()< 8){
-
-                    UserReenterPassword.setError("password >= 8 characters");
-                    return;
+                    wrongpassword pass;
+                    UserPassword = pass.wrongpasswordlegnth(password);
                 }
                 //if re enter password is empty display error
                 if (TextUtils.isEmpty(reenterPassword)){
-
-                    UserReenterPassword.setError("please re-enter password");
-                    return;
+                    WrongReenterpassword re;
+                    UserReenterPassword = re.reenterpassworderror(reenterPassword);
 
                 }
 
