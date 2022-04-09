@@ -31,7 +31,6 @@ public class openingscreen extends AppCompatActivity {
 
 
         opensignup();
-
         toast.show();
 
     }

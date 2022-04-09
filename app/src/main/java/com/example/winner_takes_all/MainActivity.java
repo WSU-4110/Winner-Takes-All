@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     // Access a Cloud Firestore instance from your Activity
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     // Create a new user with a first and last name
+    private static mainpagetest _instance;
 
 
     @Override
@@ -47,69 +48,78 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-              /*  Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); Could put failed text */
+                /*  Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show(); Could put failed text */
             }
         }).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) { // W7hen it's done
                 if (task.isSuccessful()) {
-                   /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
+                    /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
                 } else {
-                   /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
+                    /* Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show(); */
                 }
 
             }
         });
     }
 
+    public static mainpagetest Instance() {
+        get {
+            Logger.log("Instance called");
+            if (_instance == null) {
+                _instance = new mainpagetest();
+            }
+            return _instance
 
-    public void showToast(View view) {
-        Toast toast = Toast.makeText(this, R.string.toast_message,
-                Toast.LENGTH_SHORT);
-        openNewActivity();
-        toast.show();
-
+        }
     }
 
-    public void showToastserv(View view) {
-        Toast toast = Toast.makeText(this, R.string.toast_message,
-                Toast.LENGTH_SHORT);
-        //openserv();
-        toast.show();
+    private Mainpagetest {
+        public void showToast (View view){
+            Toast toast = Toast.makeText(this, R.string.toast_message,
+                    Toast.LENGTH_SHORT);
+            openNewActivity();
+            toast.show();
 
-    }
+        }
 
-    public void showToastrank(View view) {
-        Toast toast = Toast.makeText(this, R.string.toast_message,
-                Toast.LENGTH_SHORT);
-        openrank();
-        toast.show();
+        public void showToastserv (View view){
+            Toast toast = Toast.makeText(this, R.string.toast_message,
+                    Toast.LENGTH_SHORT);
+            //openserv();
+            toast.show();
 
-    }
+        }
 
-    public void showToastleads(View view) {
-        Toast toast = Toast.makeText(this, R.string.toast_message,
-                Toast.LENGTH_SHORT);
-        openleads();
-        toast.show();
+        public void showToastrank (View view){
+            Toast toast = Toast.makeText(this, R.string.toast_message,
+                    Toast.LENGTH_SHORT);
+            openrank();
+            toast.show();
 
-    }
+        }
 
-    public void showApi(View view)
-    {
-        Toast toast = Toast.makeText(this,"New Page!", Toast.LENGTH_SHORT);
-        openApi();
-        toast.show();
-    }
+        public void showToastleads (View view){
+            Toast toast = Toast.makeText(this, R.string.toast_message,
+                    Toast.LENGTH_SHORT);
+            openleads();
+            toast.show();
+
+        }
+
+        public void showApi (View view)
+        {
+            Toast toast = Toast.makeText(this, "New Page!", Toast.LENGTH_SHORT);
+            openApi();
+            toast.show();
+        }
 
 
+        public void openNewActivity () {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
 
-
-    public void openNewActivity(){
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-
-    }
+        }
 
    /* public void openserv(){
         Intent intent = new Intent(this, servers.class);
@@ -117,20 +127,21 @@ public class MainActivity extends AppCompatActivity {
 
     }*/
 
-    public void openrank(){
-        Intent intent = new Intent(this, Rankings.class);
-        startActivity(intent);
+        public void openrank () {
+            Intent intent = new Intent(this, Rankings.class);
+            startActivity(intent);
 
-    }
+        }
 
-    public void openleads(){
-        Intent intent = new Intent(this, Leaderboards.class);
-        startActivity(intent);
+        public void openleads () {
+            Intent intent = new Intent(this, Leaderboards.class);
+            startActivity(intent);
 
-    }
+        }
 
-    public void openApi(){
-        Intent intent =new Intent(this,ApiConnectionTest.class);
-        startActivity(intent);
+        public void openApi () {
+            Intent intent = new Intent(this, ApiConnectionTest.class);
+            startActivity(intent);
+        }
     }
 }
