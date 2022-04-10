@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -333,29 +335,38 @@ public class ApiConnectionTest extends AppCompatActivity {
     {
         setContentView(R.layout.activity_api_connection_test);
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
-
+        RadioGroup rg=new RadioGroup(this);
+        rg.setOrientation(LinearLayout.VERTICAL);
         ArrayList<RadioButton> buttons = new ArrayList<RadioButton>();
 
+        int one=1;
+        int zero=0;
+
         for(int i = 0; i < games.size(); i++) {
-            //for(int i = 0; i < 5; i++) {
+
             RadioButton button = new RadioButton(this);
             RadioButton button2= new RadioButton(this);
             buttons.add(button);
             buttons.add(button2);
             button.setText("Home");
             button2.setText("Away");
-            button.setId(i);
-            button2.setId(i+1);
+            button.setId(zero);
+            button2.setId(one);
             TextView textbutton= new TextView(this);
-            //textbutton.setText("hi");
+            rg.addView(textbutton);
+            rg.addView(button);
+            rg.addView(button2);
             textbutton.setText(""+games.get(i));
-            //textbutton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             //optional: add your buttons to any layout if you want to see them in your screen
-            layout.addView(textbutton);
-            layout.addView(button);
-            layout.addView(button2);
+            //layout.addView(textbutton);
+            //layout.addView(textbutton);
+            //layout.addView(button);
+            //layout.addView(button2);
 
         }
+
+        layout.addView(rg);
+
 
         if(games.isEmpty())
         {
@@ -363,6 +374,18 @@ public class ApiConnectionTest extends AppCompatActivity {
             nogames.setText("No Games today");
             layout.addView(nogames);
         }
+        else
+        {
+            Button submit= new Button(this);
+            submit.setText("Submit");
+            layout.addView(submit);
+        }
     }
+
+
+    public void Store()
+    {
+    }
+
 
 }
