@@ -335,28 +335,34 @@ public class ApiConnectionTest extends AppCompatActivity {
     {
         setContentView(R.layout.activity_api_connection_test);
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
-        RadioGroup rg=new RadioGroup(this);
-        rg.setOrientation(LinearLayout.VERTICAL);
-        ArrayList<RadioButton> buttons = new ArrayList<RadioButton>();
+        RadioGroup rg2=new RadioGroup(this);
+        rg2.setOrientation(LinearLayout.VERTICAL);
+        //ArrayList<RadioButton> buttons = new ArrayList<RadioButton>();
 
         int one=1;
         int zero=0;
 
         for(int i = 0; i < games.size(); i++) {
 
+            RadioGroup rg=new RadioGroup(this);
+            rg.setOrientation(LinearLayout.VERTICAL);
+
             RadioButton button = new RadioButton(this);
             RadioButton button2= new RadioButton(this);
-            buttons.add(button);
-            buttons.add(button2);
+            //buttons.add(button);
+           // buttons.add(button2);
             button.setText("Home");
             button2.setText("Away");
-            button.setId(zero);
-            button2.setId(one);
+            //button.setId(zero);
+            //button2.setId(one);
+            button.setId(View.generateViewId());
+            button2.setId(View.generateViewId());
             TextView textbutton= new TextView(this);
             rg.addView(textbutton);
             rg.addView(button);
             rg.addView(button2);
             textbutton.setText(""+games.get(i));
+            rg2.addView(rg);
             //optional: add your buttons to any layout if you want to see them in your screen
             //layout.addView(textbutton);
             //layout.addView(textbutton);
@@ -365,7 +371,7 @@ public class ApiConnectionTest extends AppCompatActivity {
 
         }
 
-        layout.addView(rg);
+        layout.addView(rg2);
 
 
         if(games.isEmpty())
