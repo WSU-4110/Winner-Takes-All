@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -385,12 +386,21 @@ public class ApiConnectionTest extends AppCompatActivity {
             Button submit= new Button(this);
             submit.setText("Submit");
             layout.addView(submit);
+            //on click listner
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Store();
+                }
+            });
         }
     }
 
 
     public void Store()
     {
+        Toast hello = Toast.makeText(ApiConnectionTest.this, "Hello", Toast.LENGTH_LONG);
+
     }
 
 
