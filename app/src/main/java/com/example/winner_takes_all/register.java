@@ -41,7 +41,7 @@ public class register extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
-    View Score;
+    int Score;
     int Admin = 0;
     int PowerUP1 = 0;
     int PowerUP2 = 0;
@@ -59,8 +59,6 @@ public class register extends AppCompatActivity {
         UserReenterPassword = findViewById(R.id.Reenterpasssword);// setting up re enter password text
         RegistrationBtn = findViewById(R.id.Register);// setting up registration button
         LoginBtn = findViewById(R.id.login);// setting up login button
-        Score = findViewById(R.id.Score);
-
         fAuth = FirebaseAuth.getInstance();// setting up fire base Authentication on device
         fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);// setting up progress bar

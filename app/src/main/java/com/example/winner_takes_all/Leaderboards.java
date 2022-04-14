@@ -1,72 +1,72 @@
 package com.example.winner_takes_all;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Leaderboards extends AppCompatActivity {
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
-    String userID;
-    TextView UserName, Score, UserI; // check this
-    Button addScore, endScore;
-    int score = 0;
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+    CollectionReference users = fStore.collection("users");
+    ArrayList<String> details=new ArrayList<>();
 
-    protected void onCreate(Bundle savedInstanceState){
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboards);
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
 
 
-        UserI = findViewById(R.id.useRID);
-        userID = fAuth.getCurrentUser().getUid();
-        UserName = findViewById(R.id.Name);
-        Score = findViewById(R.id.Score);
-        addScore = (Button) findViewById(R.id.addScore);
-        endScore = (Button) findViewById(R.id.endScore);
-
-        DocumentReference documentReference = fStore.collection("users").document(userID);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+        FirebaseApp.initializeApp(this);
+        final ListView listView=(ListView)findViewById(R.id.listView);
+        users.orderBy("Score:", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                UserName.setText(value.getString("UserName:"));
-                Score.setText("Score: " + score);
-/* value.getString( */
-                addScore.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        score++;
-                        UserName.setText(value.getString("UserName:"));
-                        Score.setText("Score: " + score);
-                    }
-                });
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots)
+                {
+                    people people=queryDocumentSnapshot.toObject(people.class);
+                    details.add("UserName:" + queryDocumentSnapshot.getString("UserName:")+"\t\t\t\t"+"Score:"+people.getScore()+"\n");
+                    /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
 
-                endScore.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        SharedPreferences preferences = getSharedPreferences("PREFS", 0);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putInt("lastScore", score);
-                        editor.apply();
-                        Intent intent = new Intent(getApplicationContext(), LeaderboardsHistory.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                }
+                ArrayAdapter<String> adapter=new ArrayAdapter<>(Leaderboards.this,android.R.layout.simple_list_item_1,details);
+                listView.setAdapter(adapter);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(Leaderboards.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
     }
-}
 
+}

@@ -54,9 +54,6 @@
             android:name=".Rankings"
             android:exported="false" />
         <activity
-            android:name=".LeaderboardsHistory"
-            android:exported="true" />
-        <activity
             android:name=".Leaderboards"
             android:exported="true" />
         <activity
