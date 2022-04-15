@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -40,30 +41,34 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     }
 
-    public void showNBA(View view){
+    public void showNBA(View view) {
         NBAButton();
     }
 
-    public void showNFL(View view) {NFLButton(); }
+    public void showNFL(View view) {
+        NFLButton();
+    }
 
-    public void showNHL(View view) {NHLButton(); }
+    public void showNHL(View view) {
+        NHLButton();
+    }
 
-    public void showMLB(View view) {MLBButton(); }
+    public void showMLB(View view) {
+        MLBButton();
+    }
 
 
-
-    public void NBAButton()
-    {
+    public void NBAButton() {
 
 
-        ArrayList <String> games=new ArrayList<String>();
+        ArrayList<String> games = new ArrayList<String>();
 
 
         OkHttpClient client = new OkHttpClient();
 
         Date cdate = new Date();
         String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
-        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=%s",CurrentDate);
+        String URL = String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=%s", CurrentDate);
 
         Request request = new Request.Builder()
                 //.url("https://sportspage-feeds.p.rapidapi.com/games?league=NBA&date=2022-02-15")
@@ -84,11 +89,10 @@ public class ApiConnectionTest extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
 
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
 
 
-                    final String myResponse=response.body().string();
+                    final String myResponse = response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
@@ -97,19 +101,17 @@ public class ApiConnectionTest extends AppCompatActivity {
 
                             try {
                                 JSONObject json = new JSONObject(myResponse);
-                                JSONArray jarray=json.getJSONArray("results");
+                                JSONArray jarray = json.getJSONArray("results");
 
 
-                                for(int i=0; i < jarray.length(); i++)
-                                {
-                                    JSONObject obj=jarray.getJSONObject(i);
+                                for (int i = 0; i < jarray.length(); i++) {
+                                    JSONObject obj = jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
                                     games.add(match);
 
                                 }
-                                PrintGames(games);
-
+                                PrintGames(games,"NBA");
 
 
                             } catch (JSONException e) {
@@ -122,19 +124,19 @@ public class ApiConnectionTest extends AppCompatActivity {
             }
         });
 
-    };
+    }
+
+    ;
 
 
-
-    public void NFLButton()
-    {
-        ArrayList <String> games=new ArrayList<String>();
+    public void NFLButton() {
+        ArrayList<String> games = new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
         Date cdate = new Date();
         String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
-        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NFL&date=%s",CurrentDate);
+        String URL = String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NFL&date=%s", CurrentDate);
 
 
         Request request = new Request.Builder()
@@ -155,11 +157,10 @@ public class ApiConnectionTest extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
 
                     //String myResponse=response.toString();
-                    final String myResponse=response.body().string();
+                    final String myResponse = response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
@@ -167,19 +168,17 @@ public class ApiConnectionTest extends AppCompatActivity {
 
                             try {
                                 JSONObject json = new JSONObject(myResponse);
-                                JSONArray jarray=json.getJSONArray("results");
+                                JSONArray jarray = json.getJSONArray("results");
 
 
-                                for(int i=0; i < jarray.length(); i++)
-                                    {
-                                        JSONObject obj=jarray.getJSONObject(i);
-                                        String match = obj.getString("summary");
+                                for (int i = 0; i < jarray.length(); i++) {
+                                    JSONObject obj = jarray.getJSONObject(i);
+                                    String match = obj.getString("summary");
 
-                                        games.add(match);
+                                    games.add(match);
 
-                                    }
-                                    PrintGames(games);
-
+                                }
+                                PrintGames(games,"NFL");
 
 
                             } catch (JSONException e) {
@@ -191,19 +190,20 @@ public class ApiConnectionTest extends AppCompatActivity {
                 }
             }
         });
-    };
+    }
 
-    public void NHLButton()
-    {
+    ;
+
+    public void NHLButton() {
 
 
-        ArrayList <String> games=new ArrayList<String>();
+        ArrayList<String> games = new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
         Date cdate = new Date();
         String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
-        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=%s",CurrentDate);
+        String URL = String.format("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=%s", CurrentDate);
 
         Request request = new Request.Builder()
                 //.url("https://sportspage-feeds.p.rapidapi.com/games?league=NHL&date=2022-02-15")
@@ -223,11 +223,10 @@ public class ApiConnectionTest extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
 
 
-                    final String myResponse=response.body().string();
+                    final String myResponse = response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
@@ -235,19 +234,17 @@ public class ApiConnectionTest extends AppCompatActivity {
 
                             try {
                                 JSONObject json = new JSONObject(myResponse);
-                                JSONArray jarray=json.getJSONArray("results");
+                                JSONArray jarray = json.getJSONArray("results");
 
 
-                                for(int i=0; i < jarray.length(); i++)
-                                {
-                                    JSONObject obj=jarray.getJSONObject(i);
+                                for (int i = 0; i < jarray.length(); i++) {
+                                    JSONObject obj = jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
                                     games.add(match);
 
                                 }
-                                PrintGames(games);
-
+                                PrintGames(games,"NHL");
 
 
                             } catch (JSONException e) {
@@ -259,18 +256,19 @@ public class ApiConnectionTest extends AppCompatActivity {
                 }
             }
         });
-    };
+    }
 
-    public void MLBButton()
-    {
+    ;
 
-        ArrayList <String> games=new ArrayList<String>();
+    public void MLBButton() {
+
+        ArrayList<String> games = new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
 
         Date cdate = new Date();
         String CurrentDate = new SimpleDateFormat("yyyy-MM-dd").format(cdate);
-        String URL=String.format("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=%s",CurrentDate);
+        String URL = String.format("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=%s", CurrentDate);
 
         Request request = new Request.Builder()
                 //.url("https://sportspage-feeds.p.rapidapi.com/games?league=MLB&date=2021-10-15")
@@ -290,11 +288,10 @@ public class ApiConnectionTest extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
 
 
-                    final String myResponse=response.body().string();
+                    final String myResponse = response.body().string();
 
                     ApiConnectionTest.this.runOnUiThread(new Runnable() {
                         @Override
@@ -302,20 +299,17 @@ public class ApiConnectionTest extends AppCompatActivity {
 
                             try {
                                 JSONObject json = new JSONObject(myResponse);
-                                JSONArray jarray=json.getJSONArray("results");
+                                JSONArray jarray = json.getJSONArray("results");
 
 
-
-                                for(int i=0; i < jarray.length(); i++)
-                                {
-                                    JSONObject obj=jarray.getJSONObject(i);
+                                for (int i = 0; i < jarray.length(); i++) {
+                                    JSONObject obj = jarray.getJSONObject(i);
                                     String match = obj.getString("summary");
 
                                     games.add(match);
 
                                 }
-                                PrintGames(games);
-
+                                PrintGames(games,"MLB");
 
 
                             } catch (JSONException e) {
@@ -327,81 +321,114 @@ public class ApiConnectionTest extends AppCompatActivity {
                 }
             }
         });
-    };
+    }
+
+    ;
 
 
-
-
-    public void PrintGames(ArrayList<String> games)
-    {
+    public void PrintGames(ArrayList<String> games,String league ) {
         setContentView(R.layout.activity_api_connection_test);
         LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout);
-        RadioGroup rg2=new RadioGroup(this);
+        RadioGroup rg2 = new RadioGroup(this);
         rg2.setOrientation(LinearLayout.VERTICAL);
         //ArrayList<RadioButton> buttons = new ArrayList<RadioButton>();
 
-        int one=1;
-        int zero=0;
 
-        for(int i = 0; i < games.size(); i++) {
+        for (int i = 0; i < games.size(); i++) {
 
-            RadioGroup rg=new RadioGroup(this);
+            RadioGroup rg = new RadioGroup(this);
             rg.setOrientation(LinearLayout.VERTICAL);
 
             RadioButton button = new RadioButton(this);
-            RadioButton button2= new RadioButton(this);
-            //buttons.add(button);
-           // buttons.add(button2);
+            RadioButton button2 = new RadioButton(this);
             button.setText("Home");
             button2.setText("Away");
-            //button.setId(zero);
-            //button2.setId(one);
             button.setId(View.generateViewId());
             button2.setId(View.generateViewId());
-            TextView textbutton= new TextView(this);
+            TextView textbutton = new TextView(this);
             rg.addView(textbutton);
             rg.addView(button);
             rg.addView(button2);
-            textbutton.setText(""+games.get(i));
+            textbutton.setText("" + games.get(i));
             rg2.addView(rg);
-            //optional: add your buttons to any layout if you want to see them in your screen
-            //layout.addView(textbutton);
-            //layout.addView(textbutton);
-            //layout.addView(button);
-            //layout.addView(button2);
-
         }
 
         layout.addView(rg2);
 
 
-        if(games.isEmpty())
-        {
-            TextView nogames= new TextView(this);
+        if (games.isEmpty()) {
+            TextView nogames = new TextView(this);
             nogames.setText("No Games today");
             layout.addView(nogames);
-        }
-        else
-        {
-            Button submit= new Button(this);
+        } else {
+            Button submit = new Button(this);
             submit.setText("Submit");
             layout.addView(submit);
             //on click listner
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Store();
+                    Store(rg2,league);
                 }
             });
         }
     }
 
 
-    public void Store()
-    {
-        Toast hello = Toast.makeText(ApiConnectionTest.this, "Hello", Toast.LENGTH_LONG);
+    public void Store(RadioGroup rg,String league) {
+
+        ArrayList<String> ChoicesArray = new ArrayList<String>();
+
+        int count = rg.getChildCount();
+
+        for (int i = 0; i < count; i++) {
+            View o = rg.getChildAt(i);
+
+
+            if (o instanceof RadioGroup) {
+                for (int y = 0; y < ((RadioGroup) o).getChildCount(); y++) {
+                    View inside = ((RadioGroup) o).getChildAt(y);
+                    if (inside instanceof RadioButton) {
+                        if (((RadioButton) inside).isChecked()) {
+                            String choice = ((RadioButton) inside).getText().toString();
+                            ChoicesArray.add(choice);
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        System.out.println(ChoicesArray.size());
+
+        System.out.println("hello");
+
+        if(league=="NBA")
+        {
+
+        }
+
+        if(league=="NFL")
+        {
+
+        }
+        if(league=="NHL")
+        {
+
+        }
+        if(league=="MLB")
+        {
+
+        }
+
+
+
+
+
+        }
+
 
     }
 
 
-}
