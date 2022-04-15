@@ -54,7 +54,7 @@ public class Leaderboards extends AppCompatActivity {
                 for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots)
                 {
                     people people=queryDocumentSnapshot.toObject(people.class);
-                    details.add("UserName:" + queryDocumentSnapshot.getString("UserName:")+"\t\t\t\t"+"Score:"+people.getScore()+"\n");
+                    details.add("UserName:" + queryDocumentSnapshot.getString("UserName:")+"\t\t\t\t"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n");
                     /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
 
                 }
