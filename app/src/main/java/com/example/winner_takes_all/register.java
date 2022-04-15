@@ -41,7 +41,7 @@ public class register extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
-    int Score;
+    int Score = 0;
     int Admin = 0;
     int PowerUP1 = 0;
     int PowerUP2 = 0;
