@@ -45,7 +45,6 @@ public class Leaderboards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboards);
 
-
         FirebaseApp.initializeApp(this);
         final ListView listView=(ListView)findViewById(R.id.listView);
         users.orderBy("Score:", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -54,11 +53,11 @@ public class Leaderboards extends AppCompatActivity {
                 for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots)
                 {
                     people people=queryDocumentSnapshot.toObject(people.class);
-                    details.add("UserName:" + queryDocumentSnapshot.getString("UserName:")+"\t\t\t\t"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n");
+                    details.add(queryDocumentSnapshot.getString("UserName:")+"\n"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n");
                     /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
 
                 }
-                ArrayAdapter<String> adapter=new ArrayAdapter<>(Leaderboards.this,android.R.layout.simple_list_item_1,details);
+                ArrayAdapter<String> adapter=new ArrayAdapter<>(Leaderboards.this,R.layout.list_item,details);
                 listView.setAdapter(adapter);
             }
         }).addOnFailureListener(new OnFailureListener() {
