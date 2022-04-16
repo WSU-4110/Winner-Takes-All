@@ -13,6 +13,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firestore.v1.WriteResult;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,14 +31,18 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 
 public class ApiConnectionTest extends AppCompatActivity {
 
@@ -377,6 +391,10 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     public void Store(RadioGroup rg,String league) {
 
+        //FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        FirebaseAuth fAuth= FirebaseAuth.getInstance();
+        String userID = fAuth.getCurrentUser().getUid();
+        FirebaseFirestore db =FirebaseFirestore.getInstance();
         ArrayList<String> ChoicesArray = new ArrayList<String>();
 
         int count = rg.getChildCount();
@@ -406,19 +424,40 @@ public class ApiConnectionTest extends AppCompatActivity {
 
         if(league=="NBA")
         {
+            DocumentReference documentReference = db.collection("users").document(userID);
+            Map<String, Object> updates = new HashMap<>();
+            //Collections.addAll(ChoicesArray);
+            updates.put("NBA", ChoicesArray);
+            documentReference.update(updates);
+
+
 
         }
 
         if(league=="NFL")
         {
+            DocumentReference documentReference = db.collection("users").document(userID);
+            Map<String, Object> updates = new HashMap<>();
+            //Collections.addAll(ChoicesArray);
+            updates.put("NFL", ChoicesArray);
+            documentReference.update(updates);
 
         }
         if(league=="NHL")
         {
-
+            DocumentReference documentReference = db.collection("users").document(userID);
+            Map<String, Object> updates = new HashMap<>();
+            //Collections.addAll(ChoicesArray);
+            updates.put("NHL", ChoicesArray);
+            documentReference.update(updates);
         }
         if(league=="MLB")
         {
+            DocumentReference documentReference = db.collection("users").document(userID);
+            Map<String, Object> updates = new HashMap<>();
+            //Collections.addAll(ChoicesArray);
+            updates.put("MLB", ChoicesArray);
+            documentReference.update(updates);
 
         }
 
