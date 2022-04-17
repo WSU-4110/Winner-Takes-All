@@ -1,7 +1,11 @@
 package com.example.winner_takes_all;
 
+import android.widget.ArrayAdapter;
+
 import com.google.firebase.database.Exclude;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class people {
@@ -11,13 +15,20 @@ public class people {
     int Score;
     List<String> details;
 
+    ArrayList<String> mlbdetails;
+    List<String> nhldetails;
+    List<String> nfldetails;
+    List<String> nbadetails;
+
     public people(){ }
 
-    public people(String UserName, int Score, List<String> details){
+    public people(String UserName, int Score, List<String> details, ArrayList<String> mlbdetails){
         this.UserName = UserName;
         this.Score = Score;
         this.details = details;
+        this.mlbdetails = mlbdetails;
     }
+
 
     @Exclude
     public String getDocumentId() {
@@ -57,4 +68,8 @@ public class people {
         return details;
     }
 
+    public ArrayList<String> mlb_api() {return mlbdetails;}
+    public List<String> nba_api() {return nbadetails;}
+    public List<String> nhl_api() {return nhldetails;}
+    public List<String> nfl_api() {return nfldetails;}
 }

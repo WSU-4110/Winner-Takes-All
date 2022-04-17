@@ -210,7 +210,6 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     public void NHLButton() {
 
-
         ArrayList<String> games = new ArrayList<String>();
 
         OkHttpClient client = new OkHttpClient();
@@ -272,7 +271,7 @@ public class ApiConnectionTest extends AppCompatActivity {
         });
     }
 
-    ;
+
 
     public void MLBButton() {
 
