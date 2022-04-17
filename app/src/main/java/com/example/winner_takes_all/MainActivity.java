@@ -5,7 +5,11 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        scheduleAlarm();
+
         databaseReference = FirebaseDatabase.getInstance().getReference("this will show on firebase path");
         databaseReference.setValue("hello there").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -60,6 +66,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void scheduleAlarm() {
+        // Construct an intent that will execute the AlarmReceiver
+        Intent intent = new Intent(getApplicationContext(),NotificationUtils.class);
+        // Create a PendingIntent to be triggered when the alarm goes off
+        final PendingIntent pIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            pIntent = PendingIntent.getBroadcast(this,NotificationUtils.REQUEST_CODE,
+                    intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        }else {
+            pIntent = PendingIntent.getBroadcast(this,NotificationUtils.REQUEST_CODE,
+                    intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        }
+        // Setup periodic alarm every every half hour from this point onwards
+        long firstMillis = System.currentTimeMillis(); // alarm is set right away
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        // First parameter is the type: ELAPSED_REALTIME, ELAPSED_REALTIME_WAKEUP, RTC_WAKEUP
+        // Interval can be INTERVAL_FIFTEEN_MINUTES, INTERVAL_HALF_HOUR, INTERVAL_HOUR, INTERVAL_DAY
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                AlarmManager.INTERVAL_FIFTEEN_MINUTES, pIntent);
     }
 
 
