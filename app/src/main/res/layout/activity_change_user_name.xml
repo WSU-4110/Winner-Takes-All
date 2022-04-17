@@ -48,6 +48,7 @@
         android:layout_marginBottom="280dp"
         android:background="@color/MainGreen"
         android:text="Change UserName "
+        android:textColor="@color/MainGold"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
