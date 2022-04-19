@@ -46,7 +46,7 @@ public class register extends AppCompatActivity {
     int PowerUP1 = 0;
     int PowerUP2 = 0;
     int PowerUP3 = 0;
-    int PowerUP4 = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +135,7 @@ public class register extends AppCompatActivity {
                                                     user.put("PowerUp1:", PowerUP1);
                                                     user.put("PowerUp2:", PowerUP2);
                                                     user.put("PowerUp3:", PowerUP3);
-                                                    user.put("PowerUp4:", PowerUP4);
+
 
                                                     documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override

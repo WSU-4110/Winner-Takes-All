@@ -38,6 +38,8 @@ public class Leaderboards extends AppCompatActivity {
     FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     CollectionReference users = fStore.collection("users");
     ArrayList<String> details=new ArrayList<>();
+    int Rank = 0;
+
 
 
     @Override
@@ -52,9 +54,25 @@ public class Leaderboards extends AppCompatActivity {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots)
                 {
+                    Rank = Rank + 1;
                     people people=queryDocumentSnapshot.toObject(people.class);
-                    details.add(queryDocumentSnapshot.getString("UserName:")+"\n"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n");
+                    details.add(queryDocumentSnapshot.getString("UserName:")+"\n"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n" + "Current Rank: " + Rank + "\n" );
                     /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
+                    if (Rank == 1 ){
+
+
+
+                    }
+                    else if (Rank == 2){
+
+
+                    }
+                    else if (Rank == 3){
+
+
+
+                    }
+
 
                 }
                 ArrayAdapter<String> adapter=new ArrayAdapter<>(Leaderboards.this,R.layout.list_item,details);
