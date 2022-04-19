@@ -78,6 +78,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
+            android:onClick="showApi"
             >
 
             <LinearLayout
@@ -115,6 +116,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
+            android:onClick="showToast"
             >
 
             <LinearLayout
@@ -152,6 +154,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
+            android:onClick="showToastleads"
             >
 
             <LinearLayout
