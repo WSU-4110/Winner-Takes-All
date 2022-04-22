@@ -55,9 +55,7 @@ public class ApiConnectionTest extends AppCompatActivity {
 
     }
 
-    public void showNBA(View view) {
-        NBAButton();
-    }
+    public void showNBA(View view) { NBAButton(); }
 
     public void showNFL(View view) {
         NFLButton();
