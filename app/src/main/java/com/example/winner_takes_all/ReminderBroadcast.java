@@ -10,10 +10,7 @@ public class ReminderBroadcast extends IntentService
         super("MyTestService");
     }
 
-    public void profile(){
-        Intent intent = new Intent (this, ApiConnectionTest.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onHandleIntent(Intent intent) {
