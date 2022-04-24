@@ -32,6 +32,7 @@ public class deleteAccountTest extends TestCase {
 
         int length =    password.length();
         int lengthVal = 8;
+        //length
         assertEquals(length,lengthVal);
 
         int length1 =    email.length();
