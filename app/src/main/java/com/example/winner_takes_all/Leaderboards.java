@@ -59,6 +59,8 @@ public class Leaderboards extends AppCompatActivity {
                     details.add(queryDocumentSnapshot.getString("UserName:")+"\n"+"Score:"+queryDocumentSnapshot.get("Score:")+"\n" + "Current Rank: " + Rank + "\n" );
                     /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
                     if (Rank == 1 ){
+                        int x = 0;
+                        x = x + 1;
 
 
 
