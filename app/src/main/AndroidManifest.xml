@@ -71,14 +71,6 @@
             </intent-filter>
             -->
         </activity>
-        <receiver
-            android:name=".NotificationUtils"
-            android:process=":remote" >
-        </receiver>
-
-        <service
-            android:name=".ReminderBroadcast"
-            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

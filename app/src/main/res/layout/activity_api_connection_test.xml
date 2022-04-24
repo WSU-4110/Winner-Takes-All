@@ -8,17 +8,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     android:orientation="vertical"
     tools:context=".ApiConnectionTest">
-
-
-
 
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal">
 
 
@@ -30,57 +29,52 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:onClick="showNBA"
+
             android:text="NBA" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="4dp"
             android:onClick="showNFL"
-            android:text="NFL"
-            />
+            android:text="NFL" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginHorizontal="4dp"
-            android:text="MLB"
+            android:layout_marginTop="4dp"
             android:onClick="showMLB"
-            />
+            android:text="MLB" />
+
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginHorizontal="4dp"
-            android:text="NHL"
+            android:layout_marginTop="4dp"
             android:onClick="showNHL"
-             />
+            android:text="NHL" />
 
 
     </LinearLayout>
 
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/background_light">
+
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
-            />
+            android:gravity="center"
+            android:orientation="vertical" />
     </ScrollView>
-
-
-
 
 
 </LinearLayout>
