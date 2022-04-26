@@ -62,8 +62,8 @@ public class Rankings extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 int PowerUP1Amount = value.getLong("PowerUp1:").intValue();
-                int PowerUP2Amount = value.getLong("PowerUp1:").intValue();
-                int PowerUP3Amount = value.getLong("PowerUp1:").intValue();
+                int PowerUP2Amount = value.getLong("PowerUp2:").intValue();
+                int PowerUP3Amount = value.getLong("PowerUp3:").intValue();
                 int Score = value.getLong("Score:").intValue();
 
                 if (PowerUP1Amount != 0) {
@@ -100,7 +100,7 @@ public class Rankings extends AppCompatActivity {
                             int ScoreUpdated  = Score + 5;
                             int r = PowerUP2Amount - 1;
                             docRef.update("Score:", ScoreUpdated);
-                            docRef.update("PowerUp1:", r);
+                            docRef.update("PowerUp2:", r);
 
                         }
                     });
@@ -120,11 +120,11 @@ public class Rankings extends AppCompatActivity {
                    PowerUp3.setOnClickListener(new View.OnClickListener() {
                        @Override
                        public void onClick(View view) {
-                           Toast.makeText(Rankings.this,"Pop Powerup Detected Adding 10 to score",Toast.LENGTH_SHORT).show();
+                           Toast.makeText(Rankings.this,"Pop Powerup Detected Adding 3 to score",Toast.LENGTH_SHORT).show();
                            int ScoreUpdated  = Score + 3;
                            int r = PowerUP3Amount - 1;
                            docRef.update("Score:", ScoreUpdated);
-                           docRef.update("PowerUp1:", r);
+                           docRef.update("PowerUp3:", r);
                        }
                    });
                 }
