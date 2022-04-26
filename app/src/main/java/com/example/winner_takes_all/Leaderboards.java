@@ -69,7 +69,8 @@ public class Leaderboards extends AppCompatActivity {
                     Rank = Rank + 1;
                     people people = queryDocumentSnapshot.toObject(people.class);
 
-                    details.add(queryDocumentSnapshot.getString("UserName:") + "\n" + "Score:" + queryDocumentSnapshot.get("Score:") + "\n" + "Current Rank: " + Rank + "\n");
+                    details.add(queryDocumentSnapshot.getString("UserName:") + "\n" + "Score:" + queryDocumentSnapshot.get("Score:") + "\n" + "Current Rank: " +  Rank + "\n");
+
                     if (Rank == 1 ){
 
 
