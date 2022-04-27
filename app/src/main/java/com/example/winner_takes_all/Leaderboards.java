@@ -29,37 +29,67 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Leaderboards extends AppCompatActivity {
     FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     CollectionReference users = fStore.collection("users");
+
+
     ArrayList<String> details=new ArrayList<>();
+    int Rank = 0;
+    FirebaseAuth fAuth;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_leaderboards);
 
+        fAuth = FirebaseAuth.getInstance();
+
+        DocumentReference objectDocumentReference;
+
+        objectDocumentReference = fStore.collection("users").document(fAuth.getCurrentUser().getUid());
 
         FirebaseApp.initializeApp(this);
         final ListView listView=(ListView)findViewById(R.id.listView);
         users.orderBy("Score:", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot:queryDocumentSnapshots)
-                {
-                    people people=queryDocumentSnapshot.toObject(people.class);
-                    details.add("UserName:" + queryDocumentSnapshot.getString("UserName:")+"\t\t\t\t"+"Score:"+people.getScore()+"\n");
-                    /* YourScore.setText(value.getString("UserName:") + "'s " + ("Score:" + lastScore)); */
+                for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots) {
+                    Rank = Rank + 1;
+                    people people = queryDocumentSnapshot.toObject(people.class);
 
+                    details.add(queryDocumentSnapshot.getString("UserName:") + "\n" + "Score:" + queryDocumentSnapshot.get("Score:") + "\n" + "Current Rank: " +  Rank + "\n");
+
+                    if (Rank == 1 ){
+
+
+
+                    }
+                    else if (Rank == 2){
+
+
+                    }
+                    else if (Rank == 3){
+
+
+
+                    }
+
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(Leaderboards.this, R.layout.list_item, details);
+                    listView.setAdapter(adapter);
                 }
-                ArrayAdapter<String> adapter=new ArrayAdapter<>(Leaderboards.this,android.R.layout.simple_list_item_1,details);
-                listView.setAdapter(adapter);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -67,6 +97,7 @@ public class Leaderboards extends AppCompatActivity {
                 Toast.makeText(Leaderboards.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 }
