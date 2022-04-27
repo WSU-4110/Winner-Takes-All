@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
+    android:background="@color/MainGreen"
     android:orientation="vertical"
     tools:context=".ApiConnectionTest">
 
@@ -17,7 +17,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/MainGreen"
         android:orientation="horizontal">
 
 
@@ -28,9 +28,11 @@
             android:layout_marginHorizontal="4dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:onClick="showNBA"
+            android:backgroundTint="@color/MainGold"
 
-            android:text="NBA" />
+            android:onClick="showNBA"
+            android:text="NBA"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/button2"
@@ -38,8 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_marginTop="4dp"
+            android:backgroundTint="@color/MainGold"
             android:onClick="showNFL"
-            android:text="NFL" />
+            android:text="NFL"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/button3"
@@ -47,8 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_marginTop="4dp"
+            android:backgroundTint="@color/MainGold"
             android:onClick="showMLB"
-            android:text="MLB" />
+            android:text="MLB"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/button4"
@@ -56,8 +62,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_marginTop="4dp"
+            android:backgroundTint="@color/MainGold"
             android:onClick="showNHL"
-            android:text="NHL" />
+            android:text="NHL"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
@@ -66,7 +74,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light">
+        android:background="@color/MainGold">
 
         <LinearLayout
             android:id="@+id/linearLayout"
