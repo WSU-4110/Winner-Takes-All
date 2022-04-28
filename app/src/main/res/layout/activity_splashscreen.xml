@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#133A37"
+    android:background="@drawable/gradient_background"
     tools:context=".splashscreen">
 
     <ImageView
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:text="Winner Takes All"
         android:textAlignment="center"
-        android:textColor="@color/MainGold"
+        android:textColor="#FAC647"
         android:textSize="47sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
