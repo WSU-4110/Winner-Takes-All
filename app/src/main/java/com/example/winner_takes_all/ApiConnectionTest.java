@@ -3,6 +3,7 @@ package com.example.winner_takes_all;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -362,6 +363,17 @@ public class ApiConnectionTest extends AppCompatActivity {
             rg.addView(textbutton);
             rg.addView(button);
             rg.addView(button2);
+            ///////////////////////////////////////////
+            button.setTextColor(Color.rgb(0,0,0));
+            button2.setTextColor(Color.rgb(0,0,0));
+            button.setTextSize(20);
+
+            button2.setTextSize(20);
+            textbutton.setText(""+games.get(i));
+            textbutton.setTextSize(25);
+
+            textbutton.setTextColor(Color.rgb(17,92,86));
+            /////////////////////////////////////////////////
             textbutton.setText("" + games.get(i));
             rg2.addView(rg);
         }
@@ -376,6 +388,8 @@ public class ApiConnectionTest extends AppCompatActivity {
         } else {
             Button submit = new Button(this);
             submit.setText("Submit");
+            submit.setBackgroundColor(Color.rgb(255,0,0));
+            submit.setTextColor(Color.rgb(255,255,255));
             layout.addView(submit);
             //on click listner
             submit.setOnClickListener(new View.OnClickListener() {
