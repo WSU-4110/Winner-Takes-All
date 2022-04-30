@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnerTakesAll">
         <activity
-            android:name=".changeUserName"
+            android:name=".ChangeUserN"
             android:exported="false" />
         <activity
             android:name=".retrieveuserdata"
@@ -71,10 +71,10 @@
             </intent-filter>
             -->
         </activity>
+
         <receiver
             android:name=".NotificationUtils"
-            android:process=":remote" >
-        </receiver>
+            android:process=":remote" />
 
         <service
             android:name=".ReminderBroadcast"

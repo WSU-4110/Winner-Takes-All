@@ -9,41 +9,30 @@
     <Button
         android:id="@+id/DeleteAccount"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
         android:text="Delete Account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/retrievedata" />
 
     <Button
         android:id="@+id/theme"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
         android:text="Theme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/TeamNames"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Change User Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chnguser" />
+        app:layout_constraintTop_toBottomOf="@+id/ChangeUSN" />
 
     <Button
         android:id="@+id/chnguser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:text="Change Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,8 +42,8 @@
     <Button
         android:id="@+id/Chngpass"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
         android:text="Change Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,11 +53,21 @@
     <Button
         android:id="@+id/retrievedata"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
         android:text="Profile Data"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Chngpass" />
+
+    <Button
+        android:id="@+id/ChangeUSN"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
+        android:text="Change User Name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DeleteAccount" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

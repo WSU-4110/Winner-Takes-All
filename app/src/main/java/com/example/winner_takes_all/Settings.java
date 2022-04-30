@@ -14,7 +14,9 @@ public class Settings extends AppCompatActivity {
     private Button button2;
     private Button button3;
     private Button button4;
-    private Button button5;
+    //private Button button5;
+    private Button button7;
+    private Button button8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +62,18 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        button5 = (Button) findViewById(R.id.TeamNames);
+/*        button5 = (Button) findViewById(R.id.TeamNames);
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ChangeUserName();
+            }
+        });*/
+        button7 = (Button) findViewById(R.id.ChangeUSN);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChangeUser();
             }
         });
     }
@@ -90,8 +99,16 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ChangeUserName(){
+/*    public void ChangeUserName(){
         Intent intent = new Intent (this, changeUserName.class);
         startActivity(intent);
+    }*/
+
+    public void ChangeUser(){
+        Intent intent = new Intent (this, ChangeUserN.class);
+        startActivity(intent);
     }
+
+
+
 }
