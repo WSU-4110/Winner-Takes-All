@@ -38,7 +38,7 @@ public class ChangePassword extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         getSupportActionBar().setTitle("Login");
-        Cpass=findViewById(R.id.button6);
+        Cpass=findViewById(R.id.ChangePasswordButton);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         login=new ProgressDialog(this);
         Cpass.setOnClickListener(new View.OnClickListener() {
